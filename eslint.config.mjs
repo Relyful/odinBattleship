@@ -16,6 +16,12 @@ export default [
           rules: {
               "no-undef": "off"
           }
+      },
+      {
+        "files": ["tests/**/*"],
+        "env": {
+          "jest": true
+        }
       }
   ]
   },
