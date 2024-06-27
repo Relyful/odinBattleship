@@ -1,3 +1,3 @@
 import './style.css';
+import shipFactory from './modules/shipFactory';
 
-console.log('alive');
