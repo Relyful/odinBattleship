@@ -1,14 +1,18 @@
 import './style.css';
-import shipFactory from './modules/shipFactory';
-import gameboard from './modules/gameboardFactory';
+import { Player1, Player2, initializeGame } from "./modules/gameDriver";
 
-const testBoard = new gameboard();
-testBoard.placeShip(3, 0,0,0,2);
+initializeGame();
+console.log({Player1, Player2});
 
-testBoard.recieveAttack(0,1);
-testBoard.gameboardStatus(0,0);
+// import gameboard from './modules/gameboardFactory';
 
-testBoard.recieveAttack(0,1);
-testBoard.gameboardStatus(0,1);
+// const testBoard = new gameboard();
+// testBoard.placeShip(3, 0,0,0,2);
 
-testBoard.gameboardStatus(4,1);
+// testBoard.recieveAttack(0,1);
+// testBoard.gameboardStatus(0,0);
+
+// testBoard.recieveAttack(0,1);
+// testBoard.gameboardStatus(0,1);
+
+// testBoard.gameboardStatus(4,1);
