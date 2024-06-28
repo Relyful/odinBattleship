@@ -1,12 +1,9 @@
 import globals from "globals";
+import jest from 'eslint-plugin-jest';
 
 export default [
   {
     files: ["src/**/*"],
-    // ignores: [
-    //   "**/*.test.*",
-    //   "webpack.*.js",
-    // ],
     languageOptions: { 
       globals: globals.browser 
     },
@@ -16,4 +13,12 @@ export default [
       "prefer-const": "error"
     },
   },
+  {
+    files: ["tests/**"],
+    ...jest.configs['flat/recommended'],
+    rules: {
+      ...jest.configs['flat/recommended'].rules,
+      'jest/prefer-expect-assertions': 'off',
+    }
+  }
 ];
