@@ -24,12 +24,12 @@ export default class gameboard {
     } else if (startCoord1 !== endCoord1 && startCoord2 === endCoord2) {
       const size = endCoord1 - startCoord1;
       for (let i = 0; i <= size; i++) {
-        this.#gameboard[startCoord1 + i][startCoord2 ] = newShip;        
+        this.#gameboard[startCoord1 + i][startCoord2] = newShip;        
       }
     }
   };
 
-  recieveAttack(coord1, coord2) {
+  receiveAttack(coord1, coord2) {
     if (this.#gameboard[coord1][coord2] !== 0) {
       const ship = this.#gameboard[coord1][coord2];
       this.#hit.push([coord1, coord2]);
