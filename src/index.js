@@ -1,7 +1,8 @@
 import './style.css';
-import { Player1, Player2, initializeGame } from "./modules/gameDriver";
+import { Player1, Player2, initializeGame, initializeEventListeners } from "./modules/gameDriver";
 
 initializeGame();
+initializeEventListeners();
 console.log({Player1, Player2});
 
 Player1.board.placeShip(3, 0,0,0,2);
