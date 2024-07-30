@@ -1,6 +1,6 @@
 import player from "./player";
 
-const header = document.querySelector("header");
+const playButton = document.querySelector("#play");
 
 let Player1 = undefined;
 let Player2 = undefined;
@@ -11,8 +11,9 @@ function initializeGame() {
 }
 
 function initializeEventListeners() {
-  header.addEventListener("click", () => {
-    console.log("Halooo to som ja Hanzicek ;)");
+  playButton.addEventListener("click", () => {
+    initializeGame();
+    console.log("Game Initialized");
   })
 }
 
