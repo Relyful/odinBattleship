@@ -8,6 +8,7 @@ function drawBlindPlayBoard(player) {
     cell.classList.add("cell");
     cell.dataset.x = x;
     cell.dataset.y = y;
+    //WIP: Add switch statement to append correct parent based on player variable
     P1Board.appendChild(cell);
     if (y < 9) {
       y += 1;
