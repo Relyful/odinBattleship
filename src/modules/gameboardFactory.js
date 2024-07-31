@@ -68,4 +68,12 @@ export default class gameboard {
     });
     return status;
   }
+
+  get missed() {
+    return this.#missed;
+  };
+
+  get hit() {
+    return this.#hit;
+  }
 }
