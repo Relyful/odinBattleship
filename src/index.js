@@ -5,14 +5,14 @@ initializeGame();
 initializeEventListeners();
 console.log({Player1, Player2});
 
-Player1.board.placeShip(3, 0,0,0,2);
-Player1.board.placeShip(3, 1,0,3,0);
-console.log(Player1);
-Player1.board.receiveAttack(0,0);
-Player1.board.receiveAttack(0,1);
-Player1.board.receiveAttack(0,2);
-Player1.board.receiveAttack(2,0);
-console.log(Player1.board.allSunk());
+// Player1.board.placeShip(3, 0,0,0,2);
+// Player1.board.placeShip(3, 1,0,3,0);
+// console.log(Player1);
+// Player1.board.receiveAttack(0,0);
+// Player1.board.receiveAttack(0,1);
+// Player1.board.receiveAttack(0,2);
+// Player1.board.receiveAttack(2,0);
+// console.log(Player1.board.allSunk());
 
 // import gameboard from './modules/gameboardFactory';
 
