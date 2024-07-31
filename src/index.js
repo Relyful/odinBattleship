@@ -1,6 +1,8 @@
 import './style.css';
 import { Player1, Player2, initializeGame, initializeEventListeners } from "./modules/gameDriver";
+import { drawBlindPlayBoard } from './modules/DOM';
 
+drawBlindPlayBoard();
 initializeGame();
 initializeEventListeners();
 console.log({Player1, Player2});
