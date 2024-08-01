@@ -69,6 +69,14 @@ export default class gameboard {
     return status;
   }
 
+  shipCheck(x, y) {
+    if (this.#gameboard[x][y] !== 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   get missed() {
     return this.#missed;
   };

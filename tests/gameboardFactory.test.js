@@ -26,3 +26,9 @@ test("receiveAttack() reports true when ship hit", () => {
   testBoard.placeShip(1, "horizontal", 0, 0);
   expect(testBoard.receiveAttack(0,0)).toBeTruthy();
 });
+
+test("shipCheck() returns true if given coordinates contain ship", () => {
+  const testBoard = new gameboard();
+  testBoard.placeShip(2, "horizontal", 0, 0);
+  expect(testBoard.shipCheck(0, 1)).toBeTruthy();
+})

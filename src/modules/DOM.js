@@ -12,7 +12,7 @@ function drawBlindP2Board(player) {
     cell.dataset.x = x;
     cell.dataset.y = y;
     if (missCheck(player, x, y)) {
-      cell.style.backgroundColor = 'red';
+      cell.style.backgroundColor = 'blue';
     };
     if (hitCheck(player, x, y)) {
       cell.innerText  = "X";
@@ -26,5 +26,25 @@ function drawBlindP2Board(player) {
     }
   }
 };
+
+function drawP1Board(player) {
+  const x = 0;
+  const y = 0;
+
+  for (let i = 0; i < 100; i++) {
+    const cell = document.createElement("div");
+    cell.classList.add("cell");
+    cell.dataset.x = x;
+    cell.dataset.y = y;
+    if (missCheck(player, x, y)) {
+      cell.innerText = "X";
+      cell.style.color = "blue";
+    }
+    if (hitCheck(player, x, y)) {
+      cell.innerText = "X";
+      cell.style.color = "red";
+    }
+  }
+}
 
 export { drawBlindP2Board }
