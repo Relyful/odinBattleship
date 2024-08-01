@@ -1,9 +1,9 @@
 import player from "./player";
-// import gameboard from "./gameboardFactory";
+import { drawP1Board, drawBlindP2Board, deleteBoards } from "./DOM";
 
 const playButton = document.querySelector("#play");
 const Player1Board = document.querySelector(".player1");
-const Player2Board = document.querySelector(".player2");
+// const Player2Board = document.querySelector(".player2");
 
 let Player1 = undefined;
 let Player2 = undefined;
@@ -16,6 +16,9 @@ function initializeGame() {
 function initializeEventListeners() {
   playButton.addEventListener("click", () => {
     initializeGame();
+    deleteBoards();
+    drawBlindP2Board(Player2);
+    drawP1Board(Player1);
     console.log("Game Initialized");
   });
 

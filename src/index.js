@@ -11,12 +11,17 @@ Player1.board.placeShip(3, "vertical", 2,3);
 
 Player2.board.placeShip(3, "horizontal", 0,0);
 Player2.board.placeShip(3, "horizontal", 2,0);
+
 console.log(Player2);
+
 Player2.board.receiveAttack(0,0);
 Player2.board.receiveAttack(0,1);
 Player2.board.receiveAttack(0,2);
 Player2.board.receiveAttack(1,1);
 Player2.board.receiveAttack(2,0);
+
+Player1.board.receiveAttack(1,1);
+Player1.board.receiveAttack(3,3);
 
 drawP1Board(Player1);
 drawBlindP2Board(Player2);

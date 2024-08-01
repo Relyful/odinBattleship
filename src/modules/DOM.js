@@ -57,4 +57,9 @@ function drawP1Board(player) {
   }
 }
 
-export { drawBlindP2Board, drawP1Board }
+function deleteBoards() {
+  P1Board.replaceChildren();
+  P2Board.replaceChildren();
+}
+
+export { drawBlindP2Board, drawP1Board, deleteBoards }
