@@ -1,21 +1,21 @@
 import './style.css';
 import { Player1, Player2, initializeGame, initializeEventListeners } from "./modules/gameDriver";
-import { drawBlindPlayBoard } from './modules/DOM';
+import { drawBlindP2Board } from './modules/DOM';
 
-drawBlindPlayBoard();
 initializeGame();
 initializeEventListeners();
 console.log({Player1, Player2});
 
-Player1.board.placeShip(3, "horizontal", 0,0);
-Player1.board.placeShip(3, "horizontal", 2,0);
-console.log(Player1);
-Player1.board.receiveAttack(0,0);
-Player1.board.receiveAttack(0,1);
-Player1.board.receiveAttack(0,2);
-Player1.board.receiveAttack(2,0);
-console.log(Player1.board.allSunk());
+Player2.board.placeShip(3, "horizontal", 0,0);
+Player2.board.placeShip(3, "horizontal", 2,0);
+console.log(Player2);
+Player2.board.receiveAttack(0,0);
+Player2.board.receiveAttack(0,1);
+Player2.board.receiveAttack(0,2);
+Player2.board.receiveAttack(1,1);
+Player2.board.receiveAttack(2,0);
 
+drawBlindP2Board(Player2);
 // import gameboard from './modules/gameboardFactory';
 
 // const testBoard = new gameboard();

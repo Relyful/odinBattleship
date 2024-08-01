@@ -116,6 +116,10 @@ main {
 }
 
 .cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: blue;
   width: 33.4px;
   height: 33.4px;
   border: 1px solid black;
