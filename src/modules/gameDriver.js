@@ -23,4 +23,28 @@ function initializeEventListeners() {
   });
 }
 
-export { Player1, Player2, initializeGame, initializeEventListeners };
+function missCheck(player, x, y) {
+  const missed = player.board.missed;
+  let result = false;
+  missed.forEach(element => {
+    if (element[0] === x && element[1] === y) {
+      result = true;
+      return;
+    }
+  });
+  return result;
+}
+
+function hitCheck(player, x, y) {
+  const hit = player.board.hit;
+  let result = false;
+  hit.forEach(element => {
+    if (element[0] === x && element[1] === y) {
+      result = true;
+      return;
+    }
+  });
+  return result;
+};
+
+export { Player1, Player2, initializeGame, initializeEventListeners, missCheck, hitCheck };
