@@ -1,4 +1,4 @@
-import { missCheck, hitCheck } from "./gameDriver";
+import { missCheck, hitCheck, shipCheck } from "./gameDriver";
 
 const P1Board = document.querySelector(".player1");
 const P2Board = document.querySelector(".player2");
@@ -28,8 +28,8 @@ function drawBlindP2Board(player) {
 };
 
 function drawP1Board(player) {
-  const x = 0;
-  const y = 0;
+  let x = 0;
+  let y = 0;
 
   for (let i = 0; i < 100; i++) {
     const cell = document.createElement("div");
@@ -44,7 +44,17 @@ function drawP1Board(player) {
       cell.innerText = "X";
       cell.style.color = "red";
     }
+    if (shipCheck(player, x, y)) {
+      cell.style.backgroundColor = "grey";
+    }
+    P1Board.appendChild(cell);
+    if (y < 9) {
+      y += 1;
+    } else {
+      x += 1;
+      y = 0;
+    }
   }
 }
 
-export { drawBlindP2Board }
+export { drawBlindP2Board, drawP1Board }

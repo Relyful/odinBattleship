@@ -1,4 +1,5 @@
 import player from "./player";
+// import gameboard from "./gameboardFactory";
 
 const playButton = document.querySelector("#play");
 const Player1Board = document.querySelector(".player1");
@@ -47,4 +48,13 @@ function hitCheck(player, x, y) {
   return result;
 };
 
-export { Player1, Player2, initializeGame, initializeEventListeners, missCheck, hitCheck };
+function shipCheck(player, x, y) {
+  if (player.board.shipCheck(x, y)) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+export { Player1, Player2, initializeGame, initializeEventListeners, missCheck, hitCheck, shipCheck };
