@@ -1,5 +1,5 @@
 import player from "./player";
-import { drawP1Board, drawBlindP2Board, deleteBoards } from "./DOM";
+import { drawP1Board, drawBlindP2Board, deleteBoards, drawBoards } from "./DOM";
 
 const playButton = document.querySelector("#play");
 const Player1Board = document.querySelector(".player1");

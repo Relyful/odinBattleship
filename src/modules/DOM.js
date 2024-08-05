@@ -62,4 +62,9 @@ function deleteBoards() {
   P2Board.replaceChildren();
 }
 
-export { drawBlindP2Board, drawP1Board, deleteBoards }
+function drawBoards(player1, player2) {
+  drawP1Board(player1);
+  drawBlindP2Board(player2);
+}
+
+export { drawBlindP2Board, drawP1Board, deleteBoards, drawBoards }
