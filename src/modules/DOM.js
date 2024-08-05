@@ -63,6 +63,7 @@ function deleteBoards() {
 }
 
 function drawBoards(player1, player2) {
+  deleteBoards();
   drawP1Board(player1);
   drawBlindP2Board(player2);
 }
