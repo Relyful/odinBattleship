@@ -49,12 +49,20 @@ export default class gameboard {
   receiveAttack(coord1, coord2) {
     if (this.#gameboard[coord1][coord2] !== 0) {
       const ship = this.#gameboard[coord1][coord2];
-      this.#hit.push([coord1, coord2]);
-      ship.hit();
-      return true;
+      if (this.#hit.includes([coord1, coord2])) {
+        return 2;
+      } else {
+        this.#hit.push([coord1, coord2]);
+        ship.hit();     
+        return true;
+      } 
     } else {
+      if (this.#missed.includes([coord1, coord2])) {
+        return 2;
+      } else {
       this.#missed.push([coord1, coord2]);
       return false
+      }
     }
   };
 
