@@ -40,6 +40,11 @@ function initializeEventListeners() {
       while (pcResult === 2) {
         pcResult = computerAttack();
       }
+      if (Player1.board.allSunk()) {
+        console.log('Player2Won!!');
+        Player2Board.removeEventListener("click", handleCellClick);
+        return result;
+      }
     }
     return;
   }
