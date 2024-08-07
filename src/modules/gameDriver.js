@@ -27,9 +27,21 @@ function initializeEventListeners() {
   });
 
   Player2Board.addEventListener("click", (e) => {
-    cellAttack(e, Player2);
-    computerAttack();
+    const result = cellAttack(e, Player2);
+    if (result === 2) {
+      return result;
+    } else {
+      let pcResult = computerAttack();
+      while (pcResult === 2) {
+        pcResult = computerAttack();
+      }
+    }
+    return;
   });
+
+    Player2Board.addEventListener('dragstart', (event) => {event.preventDefault();});
+    Player2Board.addEventListener('dragover', (event) => {event.preventDefault();});
+    Player2Board.addEventListener('drop', (event) => {event.preventDefault();});
 }
 
 function missCheck(player, x, y) {
@@ -66,23 +78,33 @@ function shipCheck(player, x, y) {
 }
 
 function cellAttack(event, player) {
+  if (event.target.dataset.y === undefined || event.target.dataset.x === undefined) {
+    return 2;
+  } else {
   const coordX = parseInt(event.target.dataset.x);
   const coordY = parseInt(event.target.dataset.y);
-  console.log(event);
+  
 
-  console.log(player.board.receiveAttack(coordX, coordY));
-  console.log(Player2);
+  const result = player.board.receiveAttack(coordX, coordY);
   drawBoards(Player1, Player2);
-  return;
+  return result;
+  }
 }
 
 function computerAttack() {
-  const randomCoordX = Math.floor(Math.random() * 10);
-  const randomCoordY = Math.floor(Math.random() * 10);
-  console.log([randomCoordX, randomCoordY]);
+  let randomCoordX = Math.floor(Math.random() * 10);
+  let randomCoordY = Math.floor(Math.random() * 10);
 
-  Player1.board.receiveAttack(randomCoordX, randomCoordY);
+  let result = Player1.board.receiveAttack(randomCoordX, randomCoordY);
+  while (result === 2) {
+    console.log("missed");
+    
+    randomCoordX = Math.floor(Math.random() * 10);
+    randomCoordY = Math.floor(Math.random() * 10);
+    result = Player1.board.receiveAttack(randomCoordX, randomCoordY);
+  }
   drawBoards(Player1, Player2);
+  return result;
 }
 
 export { Player1, Player2, initializeGame, initializeEventListeners, missCheck, hitCheck, shipCheck };

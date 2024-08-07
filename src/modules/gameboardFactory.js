@@ -57,7 +57,6 @@ export default class gameboard {
         return true;
       }
     } else {
-      console.log(this.#missed);
       if (arrayIncludesSubArray(this.#missed, [coord1, coord2])) {
         return 2;
       } else {
