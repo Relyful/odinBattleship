@@ -1,9 +1,10 @@
 import { missCheck, hitCheck, shipCheck } from "./gameDriver";
 
 const P1Board = document.querySelector(".player1");
-const P2Board = document.querySelector(".player2");
+let P2Board = document.querySelector(".player2");
 
 function drawBlindP2Board(player) {
+  P2Board = document.querySelector(".player2");
   let x = 0;
   let y = 0;
   for (let i = 0; i < 100; i++) {        

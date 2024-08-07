@@ -3,8 +3,8 @@ import { Player1, Player2, initializeGame, initializeEventListeners } from "./mo
 import { drawBlindP2Board, drawP1Board } from './modules/DOM';
 
 initializeGame();
-initializeEventListeners();
 console.log({Player1, Player2});
 
 drawP1Board(Player1);
 drawBlindP2Board(Player2);
+initializeEventListeners();

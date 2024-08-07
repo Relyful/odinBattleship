@@ -24,24 +24,31 @@ function initializeEventListeners() {
     deleteBoards();
     drawBoards(Player1, Player2);
     console.log("Game Initialized");
-  });
+  });  
 
-  Player2Board.addEventListener("click", (e) => {
+  const handleCellClick = (e) => {
     const result = cellAttack(e, Player2);
     if (result === 2) {
       return result;
     } else {
+      if (Player2.board.allSunk()) {
+        console.log('Player1Won!!');
+        Player2Board.removeEventListener("click", handleCellClick);
+        return result;
+      }
       let pcResult = computerAttack();
       while (pcResult === 2) {
         pcResult = computerAttack();
       }
     }
     return;
-  });
+  }
 
-    Player2Board.addEventListener('dragstart', (event) => {event.preventDefault();});
-    Player2Board.addEventListener('dragover', (event) => {event.preventDefault();});
-    Player2Board.addEventListener('drop', (event) => {event.preventDefault();});
+  Player2Board.addEventListener("click", handleCellClick);
+
+  Player2Board.addEventListener('dragstart', (event) => {event.preventDefault();});
+  Player2Board.addEventListener('dragover', (event) => {event.preventDefault();});
+  Player2Board.addEventListener('drop', (event) => {event.preventDefault();});
 }
 
 function missCheck(player, x, y) {
