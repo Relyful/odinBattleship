@@ -27,6 +27,13 @@ test("receiveAttack() reports true when ship hit", () => {
   expect(testBoard.receiveAttack(0,0)).toBeTruthy();
 });
 
+test("receiveAttack() reports 2 when duplicate attack detected.", () => {
+  const testBoard = new gameboard();
+  testBoard.placeShip(1, "horizontal", 0, 0);
+  testBoard.receiveAttack(0,0);
+  expect(testBoard.receiveAttack(0,0)).toEqual(2);
+})
+
 test("shipCheck() returns true if given coordinates contain ship", () => {
   const testBoard = new gameboard();
   testBoard.placeShip(2, "horizontal", 0, 0);
