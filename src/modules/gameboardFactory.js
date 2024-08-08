@@ -11,8 +11,7 @@ export default class gameboard {
   }
 
   placeShip(shipSize, orientation, startCoord1, startCoord2) {
-    const newShip = new shipFactory(shipSize);
-    this.#allShips.push(newShip);
+    const newShip = new shipFactory(shipSize);    
     const proposedCells = [];
 
     //Add all proposed coords for new ship to array to check for conflicts and out of bounds
@@ -40,6 +39,7 @@ export default class gameboard {
     }
 
     //Place ship to coresponding cells
+    this.#allShips.push(newShip);
     proposedCells.forEach((element) => {
       this.#gameboard[element[0]][element[1]] = newShip;
     });

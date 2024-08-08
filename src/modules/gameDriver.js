@@ -4,6 +4,7 @@ import { drawP1Board, drawBlindP2Board, deleteBoards, drawBoards } from "./DOM";
 const playButton = document.querySelector("#play");
 // const Player1Board = document.querySelector(".player1");
 const Player2Board = document.querySelector(".player2");
+const BOARDSIZE = 9;
 
 let Player1 = undefined;
 let Player2 = undefined;
@@ -17,12 +18,13 @@ function initializeEventListeners() {
   playButton.addEventListener("click", () => {
     initializeGame();
     //WIP: Remove after creating process to add ships to custom coords
-    Player1.board.placeShip(3, "horizontal", 0,0);
-    Player1.board.placeShip(3, "vertical", 2,3);
-    Player2.board.placeShip(3, "horizontal", 0,0);
-    Player2.board.placeShip(3, "vertical", 2,0);
+    place5RandomShips(Player1);
+    place5RandomShips(Player2);
+
     deleteBoards();
     drawBoards(Player1, Player2);
+    console.log([Player1, Player2]);
+    
     console.log("Game Initialized");
   });  
 
@@ -119,4 +121,41 @@ function computerAttack() {
   return result;
 }
 
-export { Player1, Player2, initializeGame, initializeEventListeners, missCheck, hitCheck, shipCheck };
+function randomCoordShip(size) {
+  let randomCoordX;
+  let randomCoordY;
+  const ranNum = Math.floor(Math.random() * 2);
+  let orientation;
+  if (ranNum < 1) {
+    orientation = "vertical";
+  } else {
+    orientation = "horizontal"
+  }
+
+  if (orientation === "vertical") {
+    randomCoordX = Math.floor(Math.random() * (10 - size));
+    randomCoordY = Math.floor(Math.random() * 10);
+  } else {
+    randomCoordY = Math.floor(Math.random() * (10 - size));
+    randomCoordX = Math.floor(Math.random() * 10);
+  }
+  return [size, orientation, randomCoordX, randomCoordY];
+}
+
+function place5RandomShips(player) {
+
+  function helper(size) {
+    let result = false;
+    while (!result) {
+      result = player.board.placeShip(...randomCoordShip(size));
+    }
+  }
+
+  helper(5);
+  helper(4);
+  helper(3);
+  helper(3);
+  helper(2);
+}
+
+export { Player1, Player2, initializeGame, initializeEventListeners, missCheck, hitCheck, shipCheck, randomCoordShip };
