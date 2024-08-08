@@ -107,12 +107,12 @@ main {
   padding: 2%;
   justify-content: space-between;
 }
-
 .player1, .player2 {
   display: flex;
-  width: 334px;
-  height: 334px;  
+  width: 336px;
+  height: 336px;  
   flex-wrap: wrap;
+  border: 1px solid black;
 }
 
 .cell {
@@ -144,7 +144,7 @@ main {
 }
 
 #randomizeShips {
-  /* width: 150px; */
+  display: none;
 }
 
 footer {

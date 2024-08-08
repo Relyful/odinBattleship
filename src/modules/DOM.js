@@ -1,10 +1,11 @@
 import { missCheck, hitCheck, shipCheck } from "./gameDriver";
 
+
+const vsDiv = document.querySelector(".vs");
 const P1Board = document.querySelector(".player1");
-let P2Board = document.querySelector(".player2");
+const P2Board = document.querySelector(".player2");
 
 function drawBlindP2Board(player) {
-  P2Board = document.querySelector(".player2");
   let x = 0;
   let y = 0;
   for (let i = 0; i < 100; i++) {        
@@ -69,4 +70,12 @@ function drawBoards(player1, player2) {
   drawBlindP2Board(player2);
 }
 
-export { drawBlindP2Board, drawP1Board, deleteBoards, drawBoards }
+function announceWinner(player) {
+  if (!player) {
+    vsDiv.innerText = 'vs';
+  } else {
+    vsDiv.innerText = `${player} Won!`;
+  };  
+};
+
+export { drawBlindP2Board, drawP1Board, deleteBoards, drawBoards, announceWinner }

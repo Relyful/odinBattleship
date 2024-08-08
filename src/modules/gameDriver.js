@@ -1,10 +1,9 @@
 import player from "./player";
-import { drawP1Board, drawBlindP2Board, deleteBoards, drawBoards } from "./DOM";
+import { drawP1Board, drawBlindP2Board, deleteBoards, drawBoards, announceWinner } from "./DOM";
 
 const playButton = document.querySelector("#play");
 // const Player1Board = document.querySelector(".player1");
 const Player2Board = document.querySelector(".player2");
-const BOARDSIZE = 9;
 
 let Player1 = undefined;
 let Player2 = undefined;
@@ -17,14 +16,15 @@ function initializeGame() {
 function initializeEventListeners() {
   playButton.addEventListener("click", () => {
     initializeGame();
-    //WIP: Remove after creating process to add ships to custom coords
+
     place5RandomShips(Player1);
     place5RandomShips(Player2);
 
     deleteBoards();
     drawBoards(Player1, Player2);
-    console.log([Player1, Player2]);
-    
+    playButton.innerText = 'Reset';
+    announceWinner();
+    console.log([Player1, Player2]);    
     console.log("Game Initialized");
   });  
 
@@ -34,8 +34,10 @@ function initializeEventListeners() {
       return result;
     } else {
       if (Player2.board.allSunk()) {
-        console.log('Player1Won!!');
+        console.log('Player1Won!!');      
+        announceWinner('Player');
         Player2Board.removeEventListener("click", handleCellClick);
+        playButton.innerText = 'Play';
         return result;
       }
       let pcResult = computerAttack();
@@ -44,7 +46,9 @@ function initializeEventListeners() {
       }
       if (Player1.board.allSunk()) {
         console.log('Player2Won!!');
+        announceWinner('PC');
         Player2Board.removeEventListener("click", handleCellClick);
+        playButton.innerText = 'Play';
         return result;
       }
     }
