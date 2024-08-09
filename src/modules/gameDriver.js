@@ -42,6 +42,8 @@ function initializeEventListeners() {
       }
       let pcResult = computerAttack();
       while (pcResult === 2) {
+        console.log('secondary miss check');
+        
         pcResult = computerAttack();
       }
       if (Player1.board.allSunk()) {
