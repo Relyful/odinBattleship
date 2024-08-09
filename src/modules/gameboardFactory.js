@@ -47,22 +47,26 @@ export default class gameboard {
   }
 
   receiveAttack(coord1, coord2) {
-    if (this.#gameboard[coord1][coord2] !== 0) {
-      const ship = this.#gameboard[coord1][coord2]; 
-      if (arrayIncludesSubArray(this.#hit, [coord1, coord2])) {
-        return 2;
-      } else {
-        this.#hit.push([coord1, coord2]);
-        ship.hit();
-        return true;
-      }
+    if (coord1 > 9 || coord1 < 0 || coord2 > 9 || coord2 < 0 ) {
+      return 2;
     } else {
-      if (arrayIncludesSubArray(this.#missed, [coord1, coord2])) {
-        return 2;
+      if (this.#gameboard[coord1][coord2] !== 0) {
+        const ship = this.#gameboard[coord1][coord2]; 
+        if (arrayIncludesSubArray(this.#hit, [coord1, coord2])) {
+          return 2;
+        } else {
+          this.#hit.push([coord1, coord2]);
+          ship.hit();
+          return true;
+        }
       } else {
-        this.#missed.push([coord1, coord2]);
-        return false;
-      }
+        if (arrayIncludesSubArray(this.#missed, [coord1, coord2])) {
+          return 2;
+        } else {
+          this.#missed.push([coord1, coord2]);
+          return false;
+        }
+      } 
     }
   }
 
