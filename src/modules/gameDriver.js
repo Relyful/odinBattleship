@@ -3,10 +3,14 @@ import {
   deleteBoards,
   drawBoards,
   announceWinner,
+  drawCleanBoard,
 } from './DOM';
 
 const playButton = document.querySelector('#play');
 const Player2Board = document.querySelector('.player2');
+const board = document.querySelector('.board');
+const changeOr = document.querySelector('#changeOrientation');
+const ships = document.querySelector('.ships');
 
 const enemyAttackQueue = [];
 let Player1 = undefined;
@@ -17,7 +21,46 @@ function initializeGame() {
   Player2 = new player();
 }
 
+function initializeEventListenersStart() {
+  const shipList = document.querySelectorAll('.ship');
 
+  function dragStartHandler(ev) {
+    console.log(ev.target);
+    ev.dataTransfer.setData('text/plain', ev.target.dataset.length);
+  }
+
+  function dropEventHandler(ev) {
+    ev.preventDefault();
+    const length = parseInt(ev.dataTransfer.getData('text/plain'));
+    const x = parseInt(ev.target.dataset.x);
+    const y = parseInt(ev.target.dataset.y);
+    const orientation = ships.dataset.orientation;
+
+    if (!isNaN(x) && !isNaN(y)) {
+      Player1.board.placeShip(length, orientation, x, y)
+    }
+    drawCleanBoard(Player1);
+  }
+
+  shipList.forEach((element) => {
+    element.addEventListener('dragstart', dragStartHandler);
+  });
+  
+  board.addEventListener('dragover', (event) => {
+    event.preventDefault();
+    console.log(event.target);
+  })
+
+  board.addEventListener('drop', dropEventHandler);
+
+  changeOr.addEventListener('click', () => {
+    if (ships.dataset.orientation === 'horizontal') {
+      ships.dataset.orientation = 'vertical';
+    } else {
+      ships.dataset.orientation = 'horizontal';
+    }
+  })
+}
 
 function initializeEventListeners() {  
   playButton.addEventListener('click', () => {
@@ -200,4 +243,5 @@ export {
   hitCheck,
   shipCheck,
   randomCoordShip,
+  initializeEventListenersStart,
 };

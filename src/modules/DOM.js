@@ -2,6 +2,7 @@ import { missCheck, hitCheck, shipCheck } from "./gameDriver";
 
 
 const vsDiv = document.querySelector(".vs");
+const board = document.querySelector(".board");
 const P1Board = document.querySelector(".player1");
 const P2Board = document.querySelector(".player2");
 
@@ -59,6 +60,29 @@ function drawP1Board(player) {
   }
 }
 
+function drawCleanBoard(player) {
+  let x = 0;
+  let y = 0;
+
+  board.replaceChildren();
+  for (let i = 0; i < 100; i++) {
+    const cell = document.createElement("div");
+    cell.classList.add("cell");
+    cell.dataset.x = x;
+    cell.dataset.y = y;
+    board.appendChild(cell);
+    if (shipCheck(player, x, y)) {
+      cell.style.backgroundColor = "grey";
+    }
+    if (y < 9) {
+      y += 1;
+    } else {
+      x += 1;
+      y = 0;
+    }
+  }
+}
+
 function deleteBoards() {
   P1Board.replaceChildren();
   P2Board.replaceChildren();
@@ -78,4 +102,4 @@ function announceWinner(player) {
   };  
 };
 
-export { drawBlindP2Board, drawP1Board, deleteBoards, drawBoards, announceWinner }
+export { drawBlindP2Board, drawP1Board, deleteBoards, drawBoards, announceWinner, drawCleanBoard }
