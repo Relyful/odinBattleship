@@ -3,8 +3,9 @@ import { missCheck, hitCheck, shipCheck } from './gameDriver';
 const vsDiv = document.querySelector('.vs');
 const board = document.querySelector('.board');
 const ships = document.querySelector('.ships');
+const shipContainer = document.querySelectorAll('.shipContainer');
 const small = document.querySelector('.smallHor');
-const big = document.querySelector('.bigHor');
+const big = document.querySelectorAll('.bigHor');
 const bigger = document.querySelector('.biggerHor');
 const biggest = document.querySelector('.biggestHor');
 const P1Board = document.querySelector('.player1');
@@ -108,13 +109,43 @@ function announceWinner(player) {
 
 function changeOrientation() {
   if (ships.dataset.orientation === 'horizontal') {
+    ships.style.width = '480px';
+    ships.classList.add('shipsVer');
+    ships.classList.remove('ships');
+    shipContainer.forEach(element => {
+      element.classList.remove('shipContainer');
+      element.classList.add('shipContainerVer');
+    });
     ships.dataset.orientation = 'vertical';
-    small.classList.remove('smallHor');
-    small.classList.add('smallVer');
+    small.classList.remove('smallHor');    
+    big.forEach(element => {
+      element.classList.remove('bigHor');
+      element.classList.add('bigVer');
+    });
+    bigger.classList.remove('biggerHor');
+    biggest.classList.remove('biggestHor');
+    small.classList.add('smallVer');    
+    bigger.classList.add('biggerVer');
+    biggest.classList.add('biggestVer');
   } else {
+    ships.style.width = '230px';
     ships.dataset.orientation = 'horizontal';
-    small.classList.remove('smallVer');
+    ships.classList.remove('shipsVer');
+    ships.classList.add('ships');
+    shipContainer.forEach(element => {
+      element.classList.remove('shipContainerVer');
+      element.classList.add('shipContainer');
+    })
     small.classList.add('smallHor');
+    big.forEach(element => {
+      element.classList.remove('bigVer');
+      element.classList.add('bigHor');
+    });
+    bigger.classList.add('biggerHor');
+    biggest.classList.add('biggestHor');
+    small.classList.remove('smallVer');
+    bigger.classList.remove('biggerVer');
+    biggest.classList.remove('biggestVer');
   }
 }
 
