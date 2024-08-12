@@ -1,8 +1,7 @@
 import './style.css';
-import { Player1, Player2, initializeGame, initializeEventListeners, randomCoordShip } from "./modules/gameDriver";
-import { drawBlindP2Board, drawP1Board } from './modules/DOM';
+// import { Player1, Player2, initializeGame, initializeEventListeners} from "./modules/gameDriver";
 
-initializeGame();
-console.log({Player1, Player2});
+// initializeGame();
+// console.log({Player1, Player2});
 
-initializeEventListeners();
+// initializeEventListeners();

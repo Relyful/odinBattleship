@@ -1,7 +1,5 @@
 import player from './player';
 import {
-  drawP1Board,
-  drawBlindP2Board,
   deleteBoards,
   drawBoards,
   announceWinner,
