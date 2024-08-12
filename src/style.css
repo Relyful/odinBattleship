@@ -139,25 +139,48 @@ justify-content: space-around;
   justify-content: center;
 }
 
-.ship {
-  height: var(--cell-size);
+.ship {  
   background-color: #301934;
 }
 
-.small {
+.smallHor {
+  height: var(--cell-size);
   width: calc(var(--cell-size)*2);
 }
 
-.big {
+.bigHor {
+  height: var(--cell-size);
   width: calc(var(--cell-size)*3);
 }
 
-.bigger {
+.biggerHor {
+  height: var(--cell-size);
   width: calc(var(--cell-size)*4);
 }
 
-.biggest {
+.biggestHor {
+  height: var(--cell-size);
   width: calc(var(--cell-size)*5);
+}
+
+.smallVer {
+  width: var(--cell-size);
+  height: calc(var(--cell-size)*2);
+}
+
+.bigVer {
+  width: var(--cell-size);
+  height: calc(var(--cell-size)*3);
+}
+
+.biggerVer {
+  width: var(--cell-size);
+  height: calc(var(--cell-size)*4);
+}
+
+.biggestVer {
+  width: var(--cell-size);
+  height: calc(var(--cell-size)*5);
 }
 
 .player1, .player2, .board {

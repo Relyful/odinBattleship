@@ -4,6 +4,7 @@ import {
   drawBoards,
   announceWinner,
   drawCleanBoard,
+  changeOrientation,
 } from './DOM';
 
 const playButton = document.querySelector('#play');
@@ -53,13 +54,9 @@ function initializeEventListenersStart() {
 
   board.addEventListener('drop', dropEventHandler);
 
-  changeOr.addEventListener('click', () => {
-    if (ships.dataset.orientation === 'horizontal') {
-      ships.dataset.orientation = 'vertical';
-    } else {
-      ships.dataset.orientation = 'horizontal';
-    }
-  })
+
+  //probably move this to DOM
+  changeOr.addEventListener('click', changeOrientation);
 }
 
 function initializeEventListeners() {  
