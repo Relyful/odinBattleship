@@ -147,6 +147,10 @@ function changeOrientation() {
     bigger.classList.remove('biggerVer');
     biggest.classList.remove('biggestVer');
   }
+};
+
+function drawPlayArea() {
+  
 }
 
 export {

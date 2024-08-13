@@ -13,6 +13,7 @@ const board = document.querySelector('.board');
 const changeOr = document.querySelector('#changeOrientation');
 const ships = document.querySelector('.ships');
 const resetButt = document.querySelector('#reset');
+const confirmButt = document.querySelector('#confirm');
 
 const enemyAttackQueue = [];
 let Player1 = undefined;
@@ -64,6 +65,10 @@ function initializeEventListenersStart() {
   resetButt.addEventListener('click', () => {
     location.reload();
   });
+  confirmButt.addEventListener('click', () => {
+    //draw play area
+    
+  })
 }
 
 function initializeEventListeners() {  
