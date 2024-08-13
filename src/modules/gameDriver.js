@@ -8,8 +8,6 @@ import {
   drawPlayArea
 } from './DOM';
 
-const playButton = document.querySelector('#play');
-const Player2Board = document.querySelector('.player2');
 const board = document.querySelector('.board');
 const changeOr = document.querySelector('#changeOrientation');
 const ships = document.querySelector('.ships');

@@ -1,6 +1,5 @@
 import { missCheck, hitCheck, shipCheck } from './gameDriver';
 
-const vsDiv = document.querySelector('.vs');
 const board = document.querySelector('.board');
 const ships = document.querySelector('.ships');
 const shipContainer = document.querySelectorAll('.shipContainer');
@@ -8,8 +7,6 @@ const small = document.querySelector('.smallHor');
 const big = document.querySelectorAll('.bigHor');
 const bigger = document.querySelector('.biggerHor');
 const biggest = document.querySelector('.biggestHor');
-const P1Board = document.querySelector('.player1');
-const P2Board = document.querySelector('.player2');
 const secondHeader = document.querySelector('.secondHeader');
 const main = document.querySelector('main');
 
