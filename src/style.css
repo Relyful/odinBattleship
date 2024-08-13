@@ -226,17 +226,13 @@ justify-content: space-around;
   gap: 15px;
 }
 
-#play, #randomizeShips {
+#play, #resetGame, #changeOrientation, #confirm, #reset {
   height: 60px;
   width: 100px;
   line-height: 1;
   border-radius: 13px;
   font-size: smaller;  
   box-shadow: grey 5px 5px 5px ;
-}
-
-#randomizeShips {
-  display: none;
 }
 
 footer {

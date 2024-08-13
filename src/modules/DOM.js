@@ -14,6 +14,7 @@ const secondHeader = document.querySelector('.secondHeader');
 const main = document.querySelector('main');
 
 function drawBlindP2Board(player) {
+  const P2Board = document.querySelector('.player2');
   let x = 0;
   let y = 0;
   for (let i = 0; i < 100; i++) {
@@ -38,6 +39,7 @@ function drawBlindP2Board(player) {
 }
 
 function drawP1Board(player) {
+  const P1Board = document.querySelector('.player1');
   let x = 0;
   let y = 0;
 
@@ -91,6 +93,8 @@ function drawCleanBoard(player) {
 }
 
 function deleteBoards() {
+  const P1Board = document.querySelector('.player1');
+  const P2Board = document.querySelector('.player2');
   P1Board.replaceChildren();
   P2Board.replaceChildren();
 }
@@ -102,6 +106,7 @@ function drawBoards(player1, player2) {
 }
 
 function announceWinner(player) {
+  const vsDiv = document.querySelector('.vs');
   if (!player) {
     vsDiv.innerText = 'vs';
   } else {
@@ -180,9 +185,9 @@ function drawPlayArea() {
   const buttonpl = document.createElement('button');
   const buttonrand = document.createElement('button');
   buttonpl.setAttribute('id', 'play');
-  buttonrand.setAttribute('id', 'randomizeShips');
+  buttonrand.setAttribute('id', 'resetGame');
   buttonpl.innerText = 'Play';
-  buttonrand.innerText = 'Reset';
+  buttonrand.innerText = 'Reset Game';
   buttonContainer.appendChild(buttonpl);
   buttonContainer.appendChild(buttonrand);
   main.appendChild(p1);

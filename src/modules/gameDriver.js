@@ -69,10 +69,25 @@ function initializeEventListenersStart() {
   confirmButt.addEventListener('click', () => {
     //draw play area
     drawPlayArea();
+    const playButton = document.querySelector('#play');
+    const Player2Board = document.querySelector('.player2');
+    initializeEventListeners();
+    place5RandomShips(Player2);
+    deleteBoards();
+    drawBoards(Player1, Player2);
+    playButton.innerText = 'Randomize Ships';
+    announceWinner();
+    Player2Board.addEventListener('click', handleCellClick);
+    console.log([Player1, Player2]);
+    console.log('Game Initialized');
   })
 }
 
 function initializeEventListeners() {  
+  const playButton = document.querySelector('#play');
+  const Player2Board = document.querySelector('.player2');  
+  const resetGame = document.querySelector('#resetGame');
+
   playButton.addEventListener('click', () => {
     initializeGame();
 
@@ -81,37 +96,12 @@ function initializeEventListeners() {
 
     deleteBoards();
     drawBoards(Player1, Player2);
-    playButton.innerText = 'Reset';
+    playButton.innerText = 'Randomize Ships';
     announceWinner();
     Player2Board.addEventListener('click', handleCellClick);
     console.log([Player1, Player2]);
     console.log('Game Initialized');
-  });
-
-  const handleCellClick = (e) => {
-    const result = cellAttack(e, Player2);
-    if (result === 2) {
-      return result;
-    } else {
-      if (Player2.board.allSunk()) {
-        console.log('Player1Won!!');
-        announceWinner('Player');
-        Player2Board.removeEventListener('click', handleCellClick);
-        playButton.innerText = 'Play';
-        return result;
-      }
-      computerAttack();
-
-      if (Player1.board.allSunk()) {
-        console.log('Player2Won!!');
-        announceWinner('PC');
-        Player2Board.removeEventListener('click', handleCellClick);
-        playButton.innerText = 'Play';
-        return result;
-      }
-    }
-    return;
-  };
+  });  
 
   Player2Board.addEventListener('click', handleCellClick);
 
@@ -124,7 +114,35 @@ function initializeEventListeners() {
   Player2Board.addEventListener('drop', (event) => {
     event.preventDefault();
   });
+
+  resetGame.addEventListener('click', () => {
+    location.reload();
+  })
 }
+
+const handleCellClick = (e) => {
+  const Player2Board = document.querySelector('.player2');
+  const result = cellAttack(e, Player2);
+  if (result === 2) {
+    return result;
+  } else {
+    if (Player2.board.allSunk()) {
+      console.log('Player1Won!!');
+      announceWinner('Player');
+      Player2Board.removeEventListener('click', handleCellClick);
+      return result;
+    }
+    computerAttack();
+
+    if (Player1.board.allSunk()) {
+      console.log('Player2Won!!');
+      announceWinner('PC');
+      Player2Board.removeEventListener('click', handleCellClick);
+      return result;
+    }
+  }
+  return;
+};
 
 function missCheck(player, x, y) {
   const missed = player.board.missed;
