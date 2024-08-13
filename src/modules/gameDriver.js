@@ -12,6 +12,7 @@ const Player2Board = document.querySelector('.player2');
 const board = document.querySelector('.board');
 const changeOr = document.querySelector('#changeOrientation');
 const ships = document.querySelector('.ships');
+const resetButt = document.querySelector('#reset');
 
 const enemyAttackQueue = [];
 let Player1 = undefined;
@@ -26,19 +27,25 @@ function initializeEventListenersStart() {
   const shipList = document.querySelectorAll('.ship');
 
   function dragStartHandler(ev) {
-    console.log(ev.target);
     ev.dataTransfer.setData('text/plain', ev.target.dataset.length);
+    ev.dataTransfer.setData('textid', ev.target.id);
   }
 
   function dropEventHandler(ev) {
     ev.preventDefault();
+    console.log(ev);
+    
     const length = parseInt(ev.dataTransfer.getData('text/plain'));
     const x = parseInt(ev.target.dataset.x);
     const y = parseInt(ev.target.dataset.y);
     const orientation = ships.dataset.orientation;
+    const shipId = parseInt(ev.dataTransfer.getData('textid'));
 
     if (!isNaN(x) && !isNaN(y)) {
-      Player1.board.placeShip(length, orientation, x, y)
+      const status = Player1.board.placeShip(length, orientation, x, y);
+      if (status) {
+        document.getElementById(`${shipId}`).remove();
+      };
     }
     drawCleanBoard(Player1);
   }
@@ -49,14 +56,14 @@ function initializeEventListenersStart() {
   
   board.addEventListener('dragover', (event) => {
     event.preventDefault();
-    console.log(event.target);
   })
 
   board.addEventListener('drop', dropEventHandler);
 
-
-  //probably move this to DOM
   changeOr.addEventListener('click', changeOrientation);
+  resetButt.addEventListener('click', () => {
+    location.reload();
+  });
 }
 
 function initializeEventListeners() {  
