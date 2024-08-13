@@ -8,7 +8,7 @@ export default class shipFactory {
 
   get sunk() {
     return this.#sunk;
-  }  
+  }
 
   hit() {
     this.#hit += 1;

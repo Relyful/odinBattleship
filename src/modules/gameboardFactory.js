@@ -11,7 +11,7 @@ export default class gameboard {
   }
 
   placeShip(shipSize, orientation, startCoord1, startCoord2) {
-    const newShip = new shipFactory(shipSize);    
+    const newShip = new shipFactory(shipSize);
     const proposedCells = [];
 
     //Add all proposed coords for new ship to array to check for conflicts and out of bounds
@@ -47,11 +47,11 @@ export default class gameboard {
   }
 
   receiveAttack(coord1, coord2) {
-    if (coord1 > 9 || coord1 < 0 || coord2 > 9 || coord2 < 0 ) {
+    if (coord1 > 9 || coord1 < 0 || coord2 > 9 || coord2 < 0) {
       return 2;
     } else {
       if (this.#gameboard[coord1][coord2] !== 0) {
-        const ship = this.#gameboard[coord1][coord2]; 
+        const ship = this.#gameboard[coord1][coord2];
         if (arrayIncludesSubArray(this.#hit, [coord1, coord2])) {
           return 2;
         } else {
@@ -66,7 +66,7 @@ export default class gameboard {
           this.#missed.push([coord1, coord2]);
           return false;
         }
-      } 
+      }
     }
   }
 
@@ -96,10 +96,11 @@ export default class gameboard {
   get hit() {
     return this.#hit;
   }
-};
+}
 
 function arrayIncludesSubArray(arr, subArr) {
-  return arr.some(item => 
+  return arr.some(
+    (item) =>
       Array.isArray(item) &&
       item.length === subArr.length &&
       item.every((val, index) => val === subArr[index])

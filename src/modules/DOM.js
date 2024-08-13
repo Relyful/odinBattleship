@@ -116,19 +116,19 @@ function changeOrientation() {
     ships.style.width = '480px';
     ships.classList.add('shipsVer');
     ships.classList.remove('ships');
-    shipContainer.forEach(element => {
+    shipContainer.forEach((element) => {
       element.classList.remove('shipContainer');
       element.classList.add('shipContainerVer');
     });
     ships.dataset.orientation = 'vertical';
-    small.classList.remove('smallHor');    
-    big.forEach(element => {
+    small.classList.remove('smallHor');
+    big.forEach((element) => {
       element.classList.remove('bigHor');
       element.classList.add('bigVer');
     });
     bigger.classList.remove('biggerHor');
     biggest.classList.remove('biggestHor');
-    small.classList.add('smallVer');    
+    small.classList.add('smallVer');
     bigger.classList.add('biggerVer');
     biggest.classList.add('biggestVer');
   } else {
@@ -136,12 +136,12 @@ function changeOrientation() {
     ships.dataset.orientation = 'horizontal';
     ships.classList.remove('shipsVer');
     ships.classList.add('ships');
-    shipContainer.forEach(element => {
+    shipContainer.forEach((element) => {
       element.classList.remove('shipContainerVer');
       element.classList.add('shipContainer');
-    })
+    });
     small.classList.add('smallHor');
-    big.forEach(element => {
+    big.forEach((element) => {
       element.classList.remove('bigVer');
       element.classList.add('bigHor');
     });
@@ -151,7 +151,7 @@ function changeOrientation() {
     bigger.classList.remove('biggerVer');
     biggest.classList.remove('biggestVer');
   }
-};
+}
 
 function drawPlayArea() {
   secondHeader.innerHTML = '';

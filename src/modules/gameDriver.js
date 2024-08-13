@@ -5,7 +5,7 @@ import {
   announceWinner,
   drawCleanBoard,
   changeOrientation,
-  drawPlayArea
+  drawPlayArea,
 } from './DOM';
 
 const board = document.querySelector('.board');
@@ -34,7 +34,7 @@ function initializeEventListenersStart() {
   function dropEventHandler(ev) {
     ev.preventDefault();
     console.log(ev);
-    
+
     const length = parseInt(ev.dataTransfer.getData('text/plain'));
     const x = parseInt(ev.target.dataset.x);
     const y = parseInt(ev.target.dataset.y);
@@ -45,7 +45,7 @@ function initializeEventListenersStart() {
       const status = Player1.board.placeShip(length, orientation, x, y);
       if (status) {
         document.getElementById(`${shipId}`).remove();
-      };
+      }
     }
     drawCleanBoard(Player1);
   }
@@ -53,10 +53,10 @@ function initializeEventListenersStart() {
   shipList.forEach((element) => {
     element.addEventListener('dragstart', dragStartHandler);
   });
-  
+
   board.addEventListener('dragover', (event) => {
     event.preventDefault();
-  })
+  });
 
   board.addEventListener('drop', dropEventHandler);
 
@@ -78,12 +78,12 @@ function initializeEventListenersStart() {
     Player2Board.addEventListener('click', handleCellClick);
     console.log([Player1, Player2]);
     console.log('Game Initialized');
-  })
+  });
 }
 
-function initializeEventListeners() {  
+function initializeEventListeners() {
   const playButton = document.querySelector('#play');
-  const Player2Board = document.querySelector('.player2');  
+  const Player2Board = document.querySelector('.player2');
   const resetGame = document.querySelector('#resetGame');
 
   playButton.addEventListener('click', () => {
@@ -99,7 +99,7 @@ function initializeEventListeners() {
     Player2Board.addEventListener('click', handleCellClick);
     console.log([Player1, Player2]);
     console.log('Game Initialized');
-  });  
+  });
 
   Player2Board.addEventListener('click', handleCellClick);
 
@@ -115,7 +115,7 @@ function initializeEventListeners() {
 
   resetGame.addEventListener('click', () => {
     location.reload();
-  })
+  });
 }
 
 const handleCellClick = (e) => {
@@ -215,8 +215,13 @@ function computerAttack() {
   }
 
   if (result === true) {
-    const nextCoords = [[randomCoordX + 1, randomCoordY], [randomCoordX - 1, randomCoordY], [randomCoordX, randomCoordY + 1], [randomCoordX, randomCoordY -1]];
-    nextCoords.forEach(element => enemyAttackQueue.push(element));
+    const nextCoords = [
+      [randomCoordX + 1, randomCoordY],
+      [randomCoordX - 1, randomCoordY],
+      [randomCoordX, randomCoordY + 1],
+      [randomCoordX, randomCoordY - 1],
+    ];
+    nextCoords.forEach((element) => enemyAttackQueue.push(element));
     console.log(enemyAttackQueue);
   }
 
