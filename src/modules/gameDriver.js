@@ -5,6 +5,7 @@ import {
   announceWinner,
   drawCleanBoard,
   changeOrientation,
+  drawPlayArea
 } from './DOM';
 
 const playButton = document.querySelector('#play');
@@ -67,7 +68,7 @@ function initializeEventListenersStart() {
   });
   confirmButt.addEventListener('click', () => {
     //draw play area
-    
+    drawPlayArea();
   })
 }
 

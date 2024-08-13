@@ -10,6 +10,8 @@ const bigger = document.querySelector('.biggerHor');
 const biggest = document.querySelector('.biggestHor');
 const P1Board = document.querySelector('.player1');
 const P2Board = document.querySelector('.player2');
+const secondHeader = document.querySelector('.secondHeader');
+const main = document.querySelector('main');
 
 function drawBlindP2Board(player) {
   let x = 0;
@@ -150,7 +152,42 @@ function changeOrientation() {
 };
 
 function drawPlayArea() {
-  
+  secondHeader.innerHTML = '';
+  const you = document.createElement('div');
+  you.classList.add('you');
+  you.innerText = 'YOU';
+
+  const vs = document.createElement('div');
+  vs.classList.add('vs');
+  vs.innerText = 'vs';
+
+  const pc = document.createElement('div');
+  pc.classList.add('pc');
+  pc.innerText = 'PC';
+
+  secondHeader.appendChild(you);
+  secondHeader.appendChild(vs);
+  secondHeader.appendChild(pc);
+
+  main.removeAttribute('id');
+  main.replaceChildren();
+  const p1 = document.createElement('div');
+  const buttonContainer = document.createElement('div');
+  const p2 = document.createElement('div');
+  p1.classList.add('player1');
+  buttonContainer.classList.add('buttonContainer');
+  p2.classList.add('player2');
+  const buttonpl = document.createElement('button');
+  const buttonrand = document.createElement('button');
+  buttonpl.setAttribute('id', 'play');
+  buttonrand.setAttribute('id', 'randomizeShips');
+  buttonpl.innerText = 'Play';
+  buttonrand.innerText = 'Reset';
+  buttonContainer.appendChild(buttonpl);
+  buttonContainer.appendChild(buttonrand);
+  main.appendChild(p1);
+  main.appendChild(buttonContainer);
+  main.appendChild(p2);
 }
 
 export {
@@ -161,4 +198,5 @@ export {
   announceWinner,
   drawCleanBoard,
   changeOrientation,
+  drawPlayArea,
 };
