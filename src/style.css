@@ -76,8 +76,17 @@ textarea:not([rows]) {
 
 /* CUSTOM CSS HERE */
 
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;1,300;1,400&family=Permanent+Marker&family=Sankofa+Display&display=swap');
+
+body {
+  background-color: #003459;
+  color: #00A8E8;
+}
+
 .container * {
   --cell-size: 33.4px;
+  font-family: "Permanent Marker", cursive;
+  font-size: 2rem;
   /* border: 1px solid black; */
 }
 
@@ -101,20 +110,27 @@ header {
 .secondHeader {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 50px;
 }
 
 main {
   display: flex;
+  height: 500px;
   padding: 2%;
   justify-content: space-between;
+  align-items: center;
 }
 
 main#placement {
 justify-content: space-around;
 }
 
+.paddingBottom {
+  padding-bottom: 1.5em;
+}
+
 .ships {
-  width: 230px;
+  width: 336px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -124,6 +140,7 @@ justify-content: space-around;
 
 .shipsVer {
   width: 230px;
+  height: 336px;;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -148,11 +165,16 @@ justify-content: space-around;
 }
 
 .shipName {
-  height: 1.5em;
-  font-size: 1rem;
+  font-size: 1.5rem;
   display: flex;
   width: 100%;
   justify-content: center;
+}
+
+.shipNameVertical {
+  height: 1.3rem;
+  padding-bottom: 15px;
+  font-size: 1rem;
 }
 
 .ship {  
@@ -214,7 +236,11 @@ justify-content: space-around;
   color: red;
   width: 33.4px;
   height: 33.4px;
-  border: 1px solid black;
+  border: 1px solid #00171F;
+}
+
+.cell:hover {
+  background-color: #00A8E8;
 }
 
 .buttonContainer {
@@ -224,18 +250,36 @@ justify-content: space-around;
   justify-content: center;
   align-items: center;
   gap: 15px;
+  font-size: 1.5rem;
 }
 
 #play, #resetGame, #changeOrientation, #confirm, #reset {
   height: 60px;
-  width: 100px;
+  width: 120px;
   line-height: 1;
   border-radius: 13px;
-  font-size: smaller;  
-  box-shadow: grey 5px 5px 5px ;
+  font-size: smaller;    
+  background-color: #007EA7;
+  border: none;
+}
+
+#play:hover, #resetGame:hover, #changeOrientation:hover, #confirm:hover, #reset:hover {
+  box-shadow: #00A8E8 3px 3px 5px ;
+  cursor: pointer;
 }
 
 footer {
   margin-top: auto;
-  align-self: center;
+  align-self: center;  
+}
+
+.footer {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.footer a {
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 1.5rem;
 }

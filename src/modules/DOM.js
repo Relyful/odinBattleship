@@ -9,6 +9,8 @@ const bigger = document.querySelector('.biggerHor');
 const biggest = document.querySelector('.biggestHor');
 const secondHeader = document.querySelector('.secondHeader');
 const main = document.querySelector('main');
+const secondShip = document.querySelector('#\\31').parentElement;
+const shipName = document.querySelectorAll('.shipName');
 
 function drawBlindP2Board(player) {
   const P2Board = document.querySelector('.player2');
@@ -47,7 +49,7 @@ function drawP1Board(player) {
     cell.dataset.y = y;
     if (missCheck(player, x, y)) {
       cell.innerText = 'X';
-      cell.style.color = 'blue';
+      cell.style.color = 'cyan';
     }
     if (hitCheck(player, x, y)) {
       cell.innerText = 'X';
@@ -113,6 +115,10 @@ function announceWinner(player) {
 
 function changeOrientation() {
   if (ships.dataset.orientation === 'horizontal') {
+    secondShip.classList.add('paddingBottom'); 
+    shipName.forEach(element => {
+      element.classList.add('shipNameVertical');
+    });
     ships.style.width = '480px';
     ships.classList.add('shipsVer');
     ships.classList.remove('ships');
@@ -132,7 +138,11 @@ function changeOrientation() {
     bigger.classList.add('biggerVer');
     biggest.classList.add('biggestVer');
   } else {
-    ships.style.width = '230px';
+    ships.style.width = '336px';
+    shipName.forEach(element => {
+      element.classList.remove('shipNameVertical');
+    });
+    secondShip.classList.remove('paddingBottom');
     ships.dataset.orientation = 'horizontal';
     ships.classList.remove('shipsVer');
     ships.classList.add('ships');
