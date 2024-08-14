@@ -33,7 +33,6 @@ function initializeEventListenersStart() {
 
   function dropEventHandler(ev) {
     ev.preventDefault();
-    console.log(ev);
 
     const length = parseInt(ev.dataTransfer.getData('text/plain'));
     const x = parseInt(ev.target.dataset.x);
@@ -76,8 +75,6 @@ function initializeEventListenersStart() {
     playButton.innerText = 'Randomize Ships';
     announceWinner();
     Player2Board.addEventListener('click', handleCellClick);
-    console.log([Player1, Player2]);
-    console.log('Game Initialized');
   });
 }
 
@@ -97,8 +94,6 @@ function initializeEventListeners() {
     playButton.innerText = 'Randomize Ships';
     announceWinner();
     Player2Board.addEventListener('click', handleCellClick);
-    console.log([Player1, Player2]);
-    console.log('Game Initialized');
   });
 
   Player2Board.addEventListener('click', handleCellClick);
@@ -125,7 +120,6 @@ const handleCellClick = (e) => {
     return result;
   } else {
     if (Player2.board.allSunk()) {
-      console.log('Player1Won!!');
       announceWinner('Player');
       Player2Board.removeEventListener('click', handleCellClick);
       return result;
@@ -133,7 +127,6 @@ const handleCellClick = (e) => {
     computerAttack();
 
     if (Player1.board.allSunk()) {
-      console.log('Player2Won!!');
       announceWinner('PC');
       Player2Board.removeEventListener('click', handleCellClick);
       return result;
@@ -203,7 +196,6 @@ function computerAttack() {
 
   let result = Player1.board.receiveAttack(randomCoordX, randomCoordY);
   while (result === 2) {
-    console.log('duplicate');
     if (enemyAttackQueue.length > 0) {
       const target = enemyAttackQueue.shift();
       [randomCoordX, randomCoordY] = target;
@@ -222,7 +214,6 @@ function computerAttack() {
       [randomCoordX, randomCoordY - 1],
     ];
     nextCoords.forEach((element) => enemyAttackQueue.push(element));
-    console.log(enemyAttackQueue);
   }
 
   drawBoards(Player1, Player2);

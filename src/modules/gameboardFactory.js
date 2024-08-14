@@ -27,13 +27,10 @@ export default class gameboard {
     for (let i = 0; i < proposedCells.length; i++) {
       const element = proposedCells[i];
       if (element[0] < 0 || element[0] > 9) {
-        console.log('Ship out of bounds');
         return 0;
       } else if (element[1] < 0 || element[1] > 9) {
-        console.log('Ship out of bounds');
         return 0;
       } else if (this.#gameboard[element[0]][element[1]] !== 0) {
-        console.log('Ship conflict');
         return 0;
       }
     }
