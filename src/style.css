@@ -253,7 +253,7 @@ justify-content: space-around;
   font-size: 1.5rem;
 }
 
-#play, #resetGame, #changeOrientation, #confirm, #reset {
+#play, #resetGame, #changeOrientation, #confirm, #reset, #ran5 {
   height: 60px;
   width: 120px;
   line-height: 1;
@@ -263,7 +263,7 @@ justify-content: space-around;
   border: none;
 }
 
-#play:hover, #resetGame:hover, #changeOrientation:hover, #confirm:hover, #reset:hover {
+#play:hover, #resetGame:hover, #changeOrientation:hover, #confirm:hover, #reset:hover, #ran5:hover {
   box-shadow: #00A8E8 3px 3px 5px ;
   cursor: pointer;
 }

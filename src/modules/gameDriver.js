@@ -13,6 +13,7 @@ const changeOr = document.querySelector('#changeOrientation');
 const ships = document.querySelector('.ships');
 const resetButt = document.querySelector('#reset');
 const confirmButt = document.querySelector('#confirm');
+const ran5Butt = document.querySelector('#ran5');
 
 const enemyAttackQueue = [];
 let Player1 = undefined;
@@ -47,7 +48,20 @@ function initializeEventListenersStart() {
       }
     }
     drawCleanBoard(Player1);
-  }
+  };
+
+  function startGame() {
+    drawPlayArea();
+    const playButton = document.querySelector('#play');
+    const Player2Board = document.querySelector('.player2');
+    initializeEventListeners();
+    place5RandomShips(Player2);
+    deleteBoards();
+    drawBoards(Player1, Player2);
+    playButton.innerText = 'Randomize Ships';
+    announceWinner();
+    Player2Board.addEventListener('click', handleCellClick);
+  };
 
   shipList.forEach((element) => {
     element.addEventListener('dragstart', dragStartHandler);
@@ -65,18 +79,16 @@ function initializeEventListenersStart() {
   });
   confirmButt.addEventListener('click', () => {
     //draw play area
-    drawPlayArea();
-    const playButton = document.querySelector('#play');
-    const Player2Board = document.querySelector('.player2');
-    initializeEventListeners();
-    place5RandomShips(Player2);
-    deleteBoards();
-    drawBoards(Player1, Player2);
-    playButton.innerText = 'Randomize Ships';
-    announceWinner();
-    Player2Board.addEventListener('click', handleCellClick);
+    startGame();
   });
-}
+
+  ran5Butt.addEventListener('click', () => {
+    initializeGame();
+    place5RandomShips(Player1);
+    drawCleanBoard(Player1);
+    startGame();
+  });    
+  };
 
 function initializeEventListeners() {
   const playButton = document.querySelector('#play');
